@@ -19,7 +19,7 @@ def get_context_from_query(index, query, k=3):
         titre = doc.metadata.get("titre", "Titre inconnu")
         source = doc.metadata.get("source", "Source inconnue")
         contenu = doc.page_content
-        formatted_doc = f"TITRE : {titre}\nSOURCE : {source}\n\n{contenu}"
+        formatted_doc = f"TITRE : {titre}\n\n{contenu}\n\nSOURCE URL à donner à l'utilisateur : {source}"
         context_parts.append(formatted_doc)
 
     context_text = "\n\n---\n\n".join(context_parts)
