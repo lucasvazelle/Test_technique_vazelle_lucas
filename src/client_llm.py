@@ -1,20 +1,20 @@
 import requests
 import json
-from retriever import load_faiss_index, get_context_from_query
+from retriever import load_faiss_index, get_context_from_query, nettoyer_prompt
 
-model = "modele_llm"
+model = "model_llama_3b"
 
 def generate(user_input, previous_context):
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
 
-    prompt = f"""Voici des documents utiles : 
+    prompt = f"""Voici des documents utiles : \n\n
 
-{retrieved_context}
+            {retrieved_context}\n\n
 
-En te basant sur ces informations, réponds à la question suivante : 
-{user_input}
-"""
+            En te basant sur ces fiches, re donne la fiche qui réponds à la question suivante, met en avant l'élément de la fiche qui permet de répondre à la question : 
+            {user_input}
+            """
 
     r = requests.post(
         "http://127.0.0.1:11434/api/generate",
@@ -36,18 +36,18 @@ En te basant sur ces informations, réponds à la question suivante :
             return body["context"]
 
 
+
 def generate_to_streamlit(user_input, previous_context):
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
 
-    prompt = f"""Voici des documents utiles : 
+    prompt = f"""Voici des documents utiles : \n\n
 
-{retrieved_context}
+    {retrieved_context}\n\n
 
-En te basant sur ces informations, réponds à la question suivante : 
-{user_input}
-Réécris l'URL donnée telle quelle dans la source.
-"""
+    En te basant sur ces fiches, re donne la fiche qui réponds à la question suivante, met en avant l'élément de la fiche qui permet de répondre à la question : 
+    {user_input}
+    """
 
     r = requests.post(
         "http://127.0.0.1:11434/api/generate",
@@ -59,17 +59,4 @@ Réécris l'URL donnée telle quelle dans la source.
         stream=True,
     )
     r.raise_for_status()
-
-    context_final = previous_context
-
-    for line in r.iter_lines():
-        body = json.loads(line)
-        if "error" in body:
-            raise Exception(body["error"])
-        if "response" in body:
-            yield body["response"]  # <- on stream le token
-        if body.get("done", False):
-            context_final = body.get("context", previous_context)
-            break
-
-    yield {"context": context_final}  # signal de fin avec contexte
+    return r

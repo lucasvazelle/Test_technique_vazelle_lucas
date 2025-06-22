@@ -1,7 +1,7 @@
 import requests
 import json
 
-model = "modele_llm"
+model = "model_llama_1b"
 
 
 def generate(user_input, context):

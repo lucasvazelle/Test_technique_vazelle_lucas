@@ -26,8 +26,6 @@ def load_documents_from_duckdb(db_path: str, table_name: str = "info_particulier
     return documents
 
 
-
-
 def create_faiss_index(documents: list[Document], save_path: str = "index/faiss_data") -> FAISS:
     embedding_model = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"

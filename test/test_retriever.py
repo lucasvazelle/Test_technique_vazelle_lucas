@@ -10,10 +10,39 @@ from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.schema import Document
 import os
+import re
+import spacy
 
-model = "modele_llm"
+model = "model_llama_1b"
 load_path = "../notebooks/faiss_data"  
 
+
+nlp = spacy.load("fr_core_news_sm")
+
+def nettoyer_prompt(prompt: str) -> str:
+    # suppression d'expressions parasites
+    expressions_parasites = [
+        r"je voudrais savoir", r"peux[- ]tu me dire", r"est[- ]ce que tu peux me dire",
+        r"je cherche à savoir", r"pourrais[- ]tu me dire", r"est[- ]ce que",
+        r"dis[- ]moi", r"saurais[- ]tu", r"j'aimerais savoir", r"est[- ]ce qu’on peut",
+        r"merci de me dire", r"du coup", r"en fait",
+        r"\b(euh|alors|donc|bah|ben|hein|quoi|voilà|genre)\b"
+    ]
+    pattern = re.compile("|".join(expressions_parasites), flags=re.IGNORECASE)
+    cleaned = pattern.sub("", prompt)
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+
+    # traitement NLP avec spaCy
+    doc = nlp(cleaned)
+
+    #  lemmatisation + suppression des stop words et de la ponctuation
+    mots_utiles = [
+        token.lemma_ for token in doc
+        if not token.is_stop and not token.is_punct and token.lemma_ != ''
+    ]
+
+    # Reconstruction de la phrase
+    return " ".join(mots_utiles)
 
 def load_faiss_index(load_path: str = "../notebooks/faiss_data"  ) -> FAISS:
     embedding_model = HuggingFaceEmbeddings(
@@ -25,9 +54,9 @@ def load_faiss_index(load_path: str = "../notebooks/faiss_data"  ) -> FAISS:
         allow_dangerous_deserialization=True  # à activer uniquement pour des documents vérifiées
     )
 
-# Récupère les k documents pertinents et les assemble en contexte brut
 def get_context_from_query(index, query, k=3):
-    docs = index.similarity_search(query, k=k)
+    query_nettoye = nettoyer_prompt(query)
+    docs = index.similarity_search(query_nettoye, k=k)
 
     context_parts = []
     for doc in docs:
@@ -40,7 +69,6 @@ def get_context_from_query(index, query, k=3):
 
     context_text = "\n\n---\n\n".join(context_parts)
     return context_text
-
 
 
 # Génère une réponse en utilisant l’API du LLM local + le contexte FAISS
