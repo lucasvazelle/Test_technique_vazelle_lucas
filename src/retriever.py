@@ -45,7 +45,8 @@ def get_context_from_query(index, query, k=3):
     # query_nettoye = nettoyer_prompt(query)
     # docs = index.similarity_search(query_nettoye, k=k)
     docs = index.similarity_search(query, k=k)
-
+    sources = []  
+    
     context_parts = []
     for doc in docs:
         titre = doc.metadata.get("titre", "Titre inconnu")
@@ -53,6 +54,7 @@ def get_context_from_query(index, query, k=3):
         contenu = doc.page_content
         formatted_doc = f"FICHE : TITRE : {titre}\n\n{contenu}\n\nSOURCE URL à donner à l'utilisateur : {source}"
         context_parts.append(formatted_doc)
+        sources.append(source)  
 
     context_text = "\n\n---\n\n".join(context_parts)
     return context_text

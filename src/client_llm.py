@@ -1,6 +1,6 @@
 import requests
 import json
-from retriever import load_faiss_index, get_context_from_query, nettoyer_prompt
+from retriever import load_faiss_index, get_context_from_query
 
 model = "model_llama_3b"
 
@@ -48,7 +48,6 @@ def generate_to_streamlit(user_input, previous_context):
             Voici la question de l'utilisateur  {user_input}. N'invente rien s'il te plaît.
             """
 
-
     r = requests.post(
         "http://127.0.0.1:11434/api/generate",
         json={
@@ -59,4 +58,5 @@ def generate_to_streamlit(user_input, previous_context):
         stream=True,
     )
     r.raise_for_status()
+
     return r

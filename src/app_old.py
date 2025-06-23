@@ -30,27 +30,15 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.image("https://fr.wikipedia.org/wiki/Direction_g%C3%A9n%C3%A9rale_des_Finances_publiques#/media/Fichier:Logo_DGFP-fr.svg", width=120)
-st.title("Assistant Fiscal - DGFiP")
+st.image("https://basegun.interieur.gouv.fr/assets/logo_dtnum-BjUxmtCL.jpg", width=120)
+st.title("Assistant interne - DGFiP")
+st.subheader("Vazelle Lucas - test technique")
 st.caption("Obtenez une fiche pratique adaptée à votre question")
-
-with st.expander("À propos de cet assistant"):
-    st.markdown("""
-    Ce chatbot vous aide à retrouver la **fiche pratique** la plus pertinente issue de l'espace particulier du site **impots.gouv.fr**.
-    > Il s'agit d'un prototype développé dans le cadre d’un test technique pour la DGFiP.
-    
-    **Sources :**
-    - 113 fiches pratiques fiscales
-                
-    **Auteur :**
-    - Vazelle Lucas
-
-    """)
 
 # Initialisation de session
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "assistant", "content": "Bonjour ! Posez-moi une question fiscale, je vous guiderai vers la bonne fiche."}
+        {"role": "assistant", "content": "Bonjour ! Posez-moi une question"}
     ]
 if "context" not in st.session_state:
     st.session_state["context"] = []
@@ -89,7 +77,5 @@ if prompt := st.chat_input("Posez votre question (ex. : Comment déclarer un rev
         st.error(f"Erreur de génération : {str(e)}")
 
 # Footer
-st.markdown("""
-    <hr>
-    <center><small>Prototype développé pour la DGFiP – Vazelle Lucas</small></center>
-""", unsafe_allow_html=True)
+
+

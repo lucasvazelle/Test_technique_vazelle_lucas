@@ -4,6 +4,6 @@ ollama serve &
 
 sleep 5
 
-cd src/
+# cd src/
 
 streamlit run app.py --server.port 8501
