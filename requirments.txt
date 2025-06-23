@@ -5,3 +5,5 @@ langchain-community==0.3.25
 sentence-transformers==4.1.0
 streamlit==1.46.0
 pandas==2.3.0
+faiss-cpu 
+
