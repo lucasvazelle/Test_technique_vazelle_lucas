@@ -9,5 +9,5 @@ COPY Modelfile /Modelfile
 
 # Démarrage avec creation du modèle au premier lancement
 CMD bash -c "\
-    ollama create model_llama_3b -f /Modelfile || true && \
+    ollama create model_llama_3b -f /Modelfile && \
     ollama serve"
