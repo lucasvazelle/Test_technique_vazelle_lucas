@@ -31,7 +31,7 @@ def nettoyer_prompt(prompt: str) -> str:
     return " ".join(mots_utiles)
 
 
-def load_faiss_index(load_path: str = "/index/faiss_data") -> FAISS:
+def load_faiss_index(load_path: str = "index/faiss_data") -> FAISS:
     embedding_model = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
