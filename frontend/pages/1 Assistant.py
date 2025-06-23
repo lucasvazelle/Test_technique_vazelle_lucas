@@ -2,7 +2,6 @@ import streamlit as st
 import json
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'src')))
 from client_llm import generate_to_streamlit
 
 st.set_page_config(page_title="Assistant DGFiP", page_icon="")
