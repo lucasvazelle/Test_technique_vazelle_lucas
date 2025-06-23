@@ -1,0 +1,11 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y curl
+RUN curl -fsSL https://ollama.com/install.sh | sh
+
+COPY Modelfile /Modelfile
+RUN ollama create modele_llama_3b -f /Modelfile
+
+CMD ["ollama", "serve"]
+
+CMD ["ollama", "run", "modele_llama_3b"]

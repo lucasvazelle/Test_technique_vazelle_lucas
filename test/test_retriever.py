@@ -11,13 +11,13 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.schema import Document
 import os
 import re
-import spacy
+# import spacy
 
 model = "model_llama_1b"
 load_path = "../notebooks/faiss_data"  
 
 
-nlp = spacy.load("fr_core_news_sm")
+# nlp = spacy.load("fr_core_news_sm")
 
 def nettoyer_prompt(prompt: str) -> str:
     # suppression d'expressions parasites
@@ -55,8 +55,9 @@ def load_faiss_index(load_path: str = "../notebooks/faiss_data"  ) -> FAISS:
     )
 
 def get_context_from_query(index, query, k=3):
-    query_nettoye = nettoyer_prompt(query)
-    docs = index.similarity_search(query_nettoye, k=k)
+    # query_nettoye = nettoyer_prompt(query)
+    # docs = index.similarity_search(query_nettoye, k=k)
+    docs = index.similarity_search(query, k=k)
 
     context_parts = []
     for doc in docs:

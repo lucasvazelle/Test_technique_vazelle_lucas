@@ -1,11 +1,11 @@
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 import re
-import spacy
+# import spacy
 
 
 def nettoyer_prompt(prompt: str) -> str:
-    nlp = spacy.load("fr_core_news_sm")
+    # nlp = spacy.load("fr_core_news_sm")
     # suppression d'expressions parasites
     expressions_parasites = [
         r"je voudrais savoir", r"peux[- ]tu me dire", r"est[- ]ce que tu peux me dire",
@@ -42,8 +42,9 @@ def load_faiss_index(load_path: str = "../index/faiss_data") -> FAISS:
     )
 
 def get_context_from_query(index, query, k=3): 
-    query_nettoye = nettoyer_prompt(query)
-    docs = index.similarity_search(query_nettoye, k=k)
+    # query_nettoye = nettoyer_prompt(query)
+    # docs = index.similarity_search(query_nettoye, k=k)
+    docs = index.similarity_search(query, k=k)
 
     context_parts = []
     for doc in docs:

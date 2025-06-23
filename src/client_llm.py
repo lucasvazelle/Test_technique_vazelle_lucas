@@ -41,13 +41,13 @@ def generate_to_streamlit(user_input, previous_context):
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
 
-    prompt = f"""Voici des documents utiles : \n\n
+    prompt = f""""Voici des fiches utiles : \n\n
 
-    {retrieved_context}\n\n
+            {retrieved_context}\n\n
 
-    En te basant sur ces fiches, re donne la fiche qui réponds à la question suivante, met en avant l'élément de la fiche qui permet de répondre à la question : 
-    {user_input}
-    """
+            Voici la question de l'utilisateur  {user_input}. N'invente rien s'il te plaît.
+            """
+
 
     r = requests.post(
         "http://127.0.0.1:11434/api/generate",

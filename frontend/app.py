@@ -1,7 +1,7 @@
 # app.py
 import streamlit as st
 import json
-from client_llm import generate_to_streamlit
+from src.client_llm import generate_to_streamlit
 
 # Configuration
 st.set_page_config(
