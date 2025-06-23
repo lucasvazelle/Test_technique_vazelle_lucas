@@ -7,7 +7,7 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 # Copier le Modelfile
 COPY Modelfile /Modelfile
 
-$CMD bash -c "\
+CMD bash -c "\
     ollama serve & \
     echo '🕒 Démarrage du serveur Ollama...' && \
     until curl -s http://localhost:11434/ > /dev/null; do \
