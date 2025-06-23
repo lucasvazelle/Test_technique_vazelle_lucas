@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   ollama:
     build: ./ollama
@@ -6,8 +5,6 @@ services:
       - "11434:11434"
     volumes:
       - ollama_models:/root/.ollama  # pour la persistance du modèle
-    environment:
-      - OLLAMA_HOST=0.0.0.0:11434
     restart: unless-stopped
 
   frontend:
