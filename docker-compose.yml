@@ -1,7 +1,7 @@
 services:
   ollama:
-
     build: ./ollama
+    # image : lucasvazelle/ollama:latest
     container_name: ollama
     ports:
       - "11434:11434"
@@ -12,7 +12,10 @@ services:
     restart: unless-stopped
 
   frontend:
+    # image: lucasvazelle/ollama-frontend:latest
     build: ./frontend
+    # environment:
+    #   - APP_ENV=docker
     ports:
       - "8501:8501"
     depends_on:
