@@ -1,11 +1,15 @@
 FROM ubuntu:22.04
 
-RUN apt-get update && apt-get install -y curl
+# Installer Ollama et dépendances
+RUN apt-get update && apt-get install -y curl sudo
 RUN curl -fsSL https://ollama.com/install.sh | sh
 
+# Copier ton fichier Modelfile
 COPY Modelfile /Modelfile
-RUN ollama create modele_llama_3b -f /Modelfile
 
-CMD ["ollama", "serve"]
-
-CMD ["ollama", "run", "modele_llama_3b"]
+# Démarrage avec creation du modèle au premier lancement
+CMD bash -c "\
+    ollama serve & \
+    ollama create model_llama_3b -f /Modelfile && \
+    ollama run model_llama_3b && \
+    fg"
