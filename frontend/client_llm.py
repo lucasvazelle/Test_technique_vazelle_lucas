@@ -49,7 +49,7 @@ def generate_to_streamlit(user_input, previous_context):
             """
 
     r = requests.post(
-        "http://127.0.0.1:11434/api/generate",
+        "http://ollama:11434/api/generate",
         json={
             "model": model,
             "prompt": prompt,
