@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: lucasvazelle/ollama-frontend:latest
+          image: lucasvazelle/test_technique_vazelle_lucas-frontend:latest
           ports:
             - containerPort: 8501
           env:
