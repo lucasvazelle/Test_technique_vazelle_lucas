@@ -7,7 +7,7 @@ from client_llm import generate_to_streamlit
 st.set_page_config(page_title="Assistant DGFiP", page_icon="")
 st.image("https://basegun.interieur.gouv.fr/assets/logo_dtnum-BjUxmtCL.jpg", width=150)
 
-st.title("Assistant Fiscal - DGFiP")
+st.title("Assistant - DGFiP")
 st.caption("Obtenez une fiche pratique adaptée à votre question.")
 
 # Session init
@@ -22,7 +22,7 @@ for msg in st.session_state["messages"]:
         st.markdown(msg["content"], unsafe_allow_html=True)
 
 # Chat input
-if prompt := st.chat_input("Posez votre question (ex. : Comment déclarer un revenu foncier ?)"):
+if prompt := st.chat_input("Posez votre question (ex. : Quels droits réels immobiliers peuvent être donnés par acte notarié ?)"):
     st.session_state["messages"].append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)

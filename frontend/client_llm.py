@@ -2,6 +2,7 @@ import requests
 import json
 from retriever import load_faiss_index, get_context_from_query
 import os
+
 model = "model_llama_3b"
 
 
