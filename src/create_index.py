@@ -4,7 +4,10 @@ from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 import duckdb
 
-def load_documents_from_duckdb(db_path: str, table_name: str = "info_particulier_impot") -> list[Document]:
+
+def load_documents_from_duckdb(
+    db_path: str, table_name: str = "info_particulier_impot"
+) -> list[Document]:
     con = duckdb.connect(database=db_path)
     df = con.execute(f"SELECT * FROM {table_name}").fetchdf()
     con.close()
@@ -16,16 +19,16 @@ def load_documents_from_duckdb(db_path: str, table_name: str = "info_particulier
         url = row.get("URL", "")
         content = f"{titre}\n\n{texte}"
 
-        metadata = {
-            "source": url,
-            "titre": titre
-        }
+        metadata = {"source": url, "titre": titre}
 
         documents.append(Document(page_content=content, metadata=metadata))
 
     return documents
 
-def create_faiss_index(documents: list[Document], save_path: str = "index/faiss_data") -> FAISS:
+
+def create_faiss_index(
+    documents: list[Document], save_path: str = "index/faiss_data"
+) -> FAISS:
     embedding_model = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
