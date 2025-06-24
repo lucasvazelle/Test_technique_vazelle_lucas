@@ -14,8 +14,8 @@ services:
   frontend:
     # image: lucasvazelle/ollama-frontend:latest
     build: ./frontend
-    # environment:
-    #   - APP_ENV=docker
+    environment:
+       - APP_ENV=docker
     ports:
       - "8501:8501"
     depends_on:

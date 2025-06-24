@@ -1,16 +1,18 @@
 import requests
 import json
 from retriever import load_faiss_index, get_context_from_query
-
+import os
 model = "model_llama_3b"
 
 
 def get_ollama_url():
-    # Par défaut, on utilise le nom de service Docker ("ollama")
-    if os.getenv("APP_ENV", "docker") == "local":
+    # Récupère le mode d'exécution ('local' ou 'docker'), défaut à 'local'
+    mode = os.getenv("APP_ENV", "local")
+    if mode == "docker":
+        return "http://ollama:11434/api/generate"
+    else:
         return "http://127.0.0.1:11434/api/generate"
-    return "http://ollama:11434/api/generate"
-
+    
 
 def generate(user_input, previous_context):
     index = load_faiss_index()
@@ -49,14 +51,14 @@ def generate_to_streamlit(user_input, previous_context):
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
 
+    url = get_ollama_url()
+
     prompt = f""""Voici des fiches utiles : \n\n
 
             {retrieved_context}\n\n
 
             Voici la question de l'utilisateur  {user_input}. N'invente rien s'il te plaît.
             """
-
-    url = get_ollama_url()
 
     r = requests.post(
         url,
@@ -73,3 +75,5 @@ def generate_to_streamlit(user_input, previous_context):
 
 
 
+
+    
