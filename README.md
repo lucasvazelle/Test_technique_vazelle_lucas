@@ -6,6 +6,12 @@ git clone https://github.com/TON_UTILISATEUR/test_technique_vazelle_lucas.git
 cd test_technique_vazelle_lucas
 
 
+export APP_ENV=local
+python script.py
+
+
+
+Le dossier frontend et ollama est destimé aux images docker
 
 2. Lancer avec Docker Compose (pull des images sur Docker Hub)
 
