@@ -12,7 +12,9 @@ st.caption("Obtenez une fiche pratique adaptée à votre question.")
 
 # Session init
 if "messages" not in st.session_state:
-    st.session_state["messages"] = [{"role": "assistant", "content": "Bonjour ! Posez-moi une question"}]
+    st.session_state["messages"] = [
+        {"role": "assistant", "content": "Bonjour ! Posez-moi une question"}
+    ]
 if "context" not in st.session_state:
     st.session_state["context"] = []
 
@@ -22,7 +24,9 @@ for msg in st.session_state["messages"]:
         st.markdown(msg["content"], unsafe_allow_html=True)
 
 # Chat input
-if prompt := st.chat_input("Posez votre question (ex. : Quels droits réels immobiliers peuvent être donnés par acte notarié ?)"):
+if prompt := st.chat_input(
+    "Posez votre question (ex. : Quels droits réels immobiliers peuvent être donnés par acte notarié ?)"
+):
     st.session_state["messages"].append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
@@ -48,7 +52,8 @@ if prompt := st.chat_input("Posez votre question (ex. : Quels droits réels immo
             except json.JSONDecodeError:
                 continue
 
-        st.session_state["messages"].append({"role": "assistant", "content": full_response})
+        st.session_state["messages"].append(
+            {"role": "assistant", "content": full_response}
+        )
     except Exception as e:
         st.error(f"Erreur technique : {e}")
-

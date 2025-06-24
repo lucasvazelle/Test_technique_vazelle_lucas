@@ -6,13 +6,16 @@ st.set_page_config(page_title="Mon CV", page_icon="📄", layout="wide")
 
 # Bouton "Quitter le CV"
 if st.button("⬅ Quitter le CV"):
-    st.switch_page("pages/1 Assistant.py")  # Change le chemin selon ta page d'accueil réelle
+    st.switch_page(
+        "pages/1 Assistant.py"
+    )  # Change le chemin selon ta page d'accueil réelle
 
 # Image de fond (ton CV)
 bg_img = get_base64_image("media/CV.jpg")
 
 # CSS pour affichage plein écran + suppression header/footer/sidebar
-st.markdown(f"""
+st.markdown(
+    f"""
     <style>
     header, footer, [data-testid="stSidebar"], button[title="Open sidebar"], button[title="Close sidebar"] {{
         display: none !important;
@@ -41,14 +44,18 @@ st.markdown(f"""
         z-index: 100;
     }}
     </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 # Contenu HTML avec bouton
-st.markdown(f"""
+st.markdown(
+    f"""
     <div class="section-cv">
         <div class="exit-btn">
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
 
 st.markdown("</div></div>", unsafe_allow_html=True)
-    

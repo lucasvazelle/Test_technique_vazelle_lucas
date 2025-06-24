@@ -13,7 +13,7 @@ def get_ollama_url():
         return "http://ollama:11434/api/generate"
     else:
         return "http://127.0.0.1:11434/api/generate"
-    
+
 
 def generate(user_input, previous_context):
     index = load_faiss_index()
@@ -47,7 +47,6 @@ def generate(user_input, previous_context):
             return body["context"]
 
 
-
 def generate_to_streamlit(user_input, previous_context):
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
@@ -73,8 +72,3 @@ def generate_to_streamlit(user_input, previous_context):
     r.raise_for_status()
 
     return r
-
-
-
-
-    
