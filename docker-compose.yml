@@ -1,7 +1,7 @@
 services:
   ollama:
     build: ./ollama
-    # image : lucasvazelle/ollama:latest
+    image : lucasvazelle/test_technique_vazelle_lucas-ollama:latest
     container_name: ollama
     ports:
       - "11434:11434"
@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
 
   frontend:
-    # image: lucasvazelle/ollama-frontend:latest
+    image: lucasvazelle/test_technique_vazelle_lucas-frontend:latest
     build: ./frontend
     environment:
        - APP_ENV=docker
