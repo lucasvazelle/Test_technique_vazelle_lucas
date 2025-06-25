@@ -1,5 +1,3 @@
-# Test_technique_vazelle_lucas
-
 # 1. Clone le repo
 
 git clone https://github.com/lucasvazelle/Test_technique_vazelle_lucas.git
@@ -9,7 +7,7 @@ cd test_technique_vazelle_lucas
 
 Assurez-vous d’avoir Docker et Docker Compose installés.
 
-***$ docker-compose up --build***
+*** $ docker-compose up --build ***
 
 Deux images sont disponibles sur Docker Hub :
 
@@ -26,12 +24,14 @@ Accès
 | --- | --- |
 | data/ | données |
 | frontend/ | application |
-| frontend/index/faiss_data/ | vector store |
-| frontend/media/ | media de l'application |
+| frontend/index/faiss_data/ | vector store pour l'application |
+| frontend/media/ | medias de l'application |
 | frontend/pages/ | pages de l'application |
 | frontend/utils/ | fonctions pour l'application |
-| index/faiss_data/ | vector store |
 | k8s/ | fichiers de configuration Kubernetes |
 | ollama/ | LLM serving |
 | sandbox/ | exploration |
-| src/ | création de vector store et tests |
+| src/ | création du vector store et tests |
+
+
+Vazelle Lucas pour la DGFIP. 
