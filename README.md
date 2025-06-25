@@ -1,6 +1,7 @@
 # 1. Clone le repo
 
 git clone https://github.com/lucasvazelle/Test_technique_vazelle_lucas.git
+
 cd test_technique_vazelle_lucas
 
 # 2. Lancer avec Docker Compose
