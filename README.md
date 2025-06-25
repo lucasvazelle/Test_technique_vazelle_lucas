@@ -22,17 +22,16 @@ Accès
 
 # Architecture  
 
-
-| Dossiers | 
-| utilisation |
-| data/ | données
-| frontend/ | application 
-| frontend/index/faiss_data/ | vector store
-| frontend/media/ | media de l'application
-| frontend/pages/ | pages de l'application
-| frontend/utils/ | fonctions pour l'application
-| index/faiss_data/ | vector store
-| k8s/ | fichiers de configuration Kubernetes 
-| ollama/ | LLM serving
-| sandbox/ | exploration
-| src/ | création de vector store et tests
+| Dossiers | Description |
+| --- | --- |
+| data/ | données |
+| frontend/ | application |
+| frontend/index/faiss_data/ | vector store |
+| frontend/media/ | media de l'application |
+| frontend/pages/ | pages de l'application |
+| frontend/utils/ | fonctions pour l'application |
+| index/faiss_data/ | vector store |
+| k8s/ | fichiers de configuration Kubernetes |
+| ollama/ | LLM serving |
+| sandbox/ | exploration |
+| src/ | création de vector store et tests |
