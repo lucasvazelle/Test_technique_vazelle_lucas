@@ -23,9 +23,9 @@ Accès
 # Architecture  
 
 
-| Dossiers |
+| Dossiers | Utilisation
 | --- |
-| data/ |
+| data/ | données
 | frontend/ | application 
 | frontend/index/faiss_data/ | vector store
 | frontend/media/ | media de l'application
