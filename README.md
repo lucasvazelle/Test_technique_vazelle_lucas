@@ -35,4 +35,4 @@ Accès
 | src/ | création du vector store et tests |
 
 
-**Vazelle Lucas pour la DGFIP.** 
+**Vazelle Lucas** 
