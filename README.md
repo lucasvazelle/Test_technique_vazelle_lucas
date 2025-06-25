@@ -23,8 +23,8 @@ Accès
 # Architecture  
 
 
-| Dossiers | Utilisation
-| --- |
+| Dossiers | 
+| utilisation |
 | data/ | données
 | frontend/ | application 
 | frontend/index/faiss_data/ | vector store
