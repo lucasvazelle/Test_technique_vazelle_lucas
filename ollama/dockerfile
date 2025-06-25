@@ -9,14 +9,19 @@ COPY Modelfile /Modelfile
 
 CMD bash -c "\
     ollama serve & \
-    echo 'Démarrage du serveur Ollama...' && \
+    echo '🕒 Démarrage du serveur Ollama...' && \
     until curl -s http://localhost:11434/ > /dev/null; do \
         echo ' En attente du serveur Ollama...'; \
         sleep 1; \
     done && \
     echo 'Serveur Ollama prêt.' && \
-    echo 'Suppression du modèle model_llama_3b (s\'il existe)...' && \
-    ollama rm model_llama_3b || true && \
-    echo 'Recréation du modèle model_llama_3b...' && \
-    ollama create model_llama_3b -f /Modelfile && \
+    if ! ollama list | grep -q model_llama_3b; then \
+        echo 'Création du modèle model_llama_3b...'; \
+        ollama create model_llama_3b -f /Modelfile; \
+    else \
+        echo ' Modèle model_llama_3b déjà existant.'; \
+    fi && \
     wait"
+
+
+
