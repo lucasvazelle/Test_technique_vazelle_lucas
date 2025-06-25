@@ -20,19 +20,19 @@ Accès
 - Frontend Streamlit : http://localhost:8501
 - Serving Ollama : http://localhost:11434
 
-# Architecture  
-.
-├── README.md
-├── __pycache__
+# Architecture  ├── README.md
+
+"""
+├── pycache/
 │   └── app.cpython-310.pyc
-├── data
+├── data/
 │   ├── info_particulier_impot.csv
 │   └── questions_fiches_fip.csv
 ├── docker-compose.yml
-├── frontend
+├── frontend/
 │   ├── Home.py
-│   ├── __init__.py
-│   ├── __pycache__
+│   ├── init.py
+│   ├── pycache/
 │   │   ├── app.cpython-310.pyc
 │   │   ├── client_llm.cpython-310.pyc
 │   │   ├── client_lmm.cpython-310.pyc
@@ -40,56 +40,58 @@ Accès
 │   │   └── retriever.cpython-310.pyc
 │   ├── client_llm.py
 │   ├── dockerfile
-│   ├── index
-│   │   └── faiss_data
-│   │       ├── index.faiss
-│   │       └── index.pkl
-│   ├── media
+│   ├── index/
+│   │   └── faiss_data/
+│   │   ├── index.faiss
+│   │   └── index.pkl
+│   ├── media/
 │   │   ├── CV.jpg
 │   │   └── test.jpg
-│   ├── pages
+│   ├── pages/
 │   │   ├── 1 Assistant.py
 │   │   ├── 2 CV.py
 │   │   └── 3 Consignes.py
 │   ├── requirements.txt
 │   ├── retriever.py
-│   └── utils
-│       ├── __pycache__
-│       │   └── styles.cpython-310.pyc
-│       └── styles.py
-├── index
-│   └── faiss_data
-│       ├── index.faiss
-│       └── index.pkl
-├── k8s
+│   └── utils/
+│   ├── pycache/
+│   │   └── styles.cpython-310.pyc
+│   └── styles.py
+├── index/
+│   └── faiss_data/
+│   ├── index.faiss
+│   └── index.pkl
+├── k8s/
 │   ├── frontend-deployment.yaml
 │   ├── frontend-service.yaml
 │   ├── ollama-deployment.yaml
 │   └── ollama-service.yaml
-├── ollama
+├── ollama/
 │   ├── Modelfile
 │   └── dockerfile
 ├── requirments.txt
-├── sandbox
+├── sandbox/
 │   ├── app_old.py
-│   ├── faiss_data
+│   ├── faiss_data/
 │   │   ├── index.faiss
 │   │   └── index.pkl
-│   ├── faiss_data2
+│   ├── faiss_data2/
 │   │   ├── index.faiss
 │   │   └── index.pkl
 │   └── notbook.ipynb.ipynb
-└── src
-    ├── Home.py
-    ├── __init__.py
-    ├── __pycache__
-    │   ├── __init__.cpython-310.pyc
-    │   ├── app.cpython-310.pyc
-    │   ├── client_llm.cpython-310.pyc
-    │   ├── client_lmm.cpython-310.pyc
-    │   ├── context_manager.cpython-310.pyc
-    │   └── retriever.cpython-310.pyc
-    ├── client_llm.py
-    ├── create_index.py
-    ├── main.py
-    └── retriever.py
+└── src/
+├── Home.py
+├── init.py
+├── pycache/
+│   ├── init.cpython-310.pyc
+│   ├── app.cpython-310.pyc
+│   ├── client_llm.cpython-310.pyc
+│   ├── client_lmm.cpython-310.pyc
+│   ├── context_manager.cpython-310.pyc
+│   └── retriever.cpython-310.pyc
+├── client_llm.py
+├── create_index.py
+├── main.py
+└── retriever.py
+
+"""
