@@ -7,7 +7,7 @@ cd test_technique_vazelle_lucas
 
 Assurez-vous d’avoir Docker et Docker Compose installés.
 
-*** $ docker-compose up --build ***
+**$ docker-compose up --build**
 
 Deux images sont disponibles sur Docker Hub :
 
@@ -34,4 +34,4 @@ Accès
 | src/ | création du vector store et tests |
 
 
-Vazelle Lucas pour la DGFIP. 
+**Vazelle Lucas pour la DGFIP.** 
