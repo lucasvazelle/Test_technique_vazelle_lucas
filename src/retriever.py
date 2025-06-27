@@ -6,6 +6,9 @@ import re
 
 
 def nettoyer_prompt(prompt: str) -> str:
+    """nettoyage du prompt pour améliorer la recherche des fiches pertinentes, 
+    technique de NLP
+    """
     # nlp = spacy.load("fr_core_news_sm")
     # suppression d'expressions parasites
     expressions_parasites = [
@@ -28,21 +31,19 @@ def nettoyer_prompt(prompt: str) -> str:
     cleaned = pattern.sub("", prompt)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
 
-    # traitement NLP avec spaCy
     doc = nlp(cleaned)
 
-    #  lemmatisation + suppression des stop words et de la ponctuation
     mots_utiles = [
         token.lemma_
         for token in doc
         if not token.is_stop and not token.is_punct and token.lemma_ != ""
     ]
 
-    # Reconstruction de la phrase
     return " ".join(mots_utiles)
 
 
 def load_faiss_index(load_path: str = "../index/faiss_data") -> FAISS:
+    """Charge l'index FAISS"""
     embedding_model = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
@@ -52,6 +53,9 @@ def load_faiss_index(load_path: str = "../index/faiss_data") -> FAISS:
 
 
 def get_context_from_query(index, query, k=3):
+    """Retourne les k fiches les plus pertinentes par rapport à
+    la query utilisateur pour l'insérer dans le prompt final
+    """
     # query_nettoye = nettoyer_prompt(query)
     # docs = index.similarity_search(query_nettoye, k=k)
     docs = index.similarity_search(query, k=k)

@@ -1,8 +1,8 @@
 # 1. Clone le repo
 
-git clone https://github.com/lucasvazelle/Test_technique_vazelle_lucas.git
+git clone "https://github.com/lucasvazelle/Test_technique_vazelle_lucas.git"
 
-cd test_technique_vazelle_lucas
+cd Test_technique_vazelle_lucas
 
 # 2. Lancer avec Docker Compose
 
@@ -13,7 +13,7 @@ Assurez-vous d’avoir Docker et Docker Compose installés.
 Deux images sont disponibles sur Docker Hub :
 
 - Backend (Ollama) : [`lucasvazelle/test_technique_vazelle_lucas-ollama`](https://hub.docker.com/r/lucasvazelle/test_technique_vazelle_lucas-ollama)  
-- Frontend (Streamlit) : [`lucasvazelle/test_technique_vazelle_lucas-frontend`](https://hub.docker.com/r/lucasvazelle test_technique_vazelle_lucas-frontend`)
+- Frontend (Streamlit) : [`lucasvazelle/test_technique_vazelle_lucas-frontend`](https://hub.docker.com/r/lucasvazelle/test_technique_vazelle_lucas-frontend)
 
 Accès
 - Frontend Streamlit : http://localhost:8501
@@ -32,7 +32,7 @@ Accès
 | k8s/ | fichiers de configuration Kubernetes |
 | ollama/ | LLM serving |
 | sandbox/ | exploration |
-| src/ | création du vector store et tests |
+| src/ | création du vecteur store et tests |
 
 
 **Vazelle Lucas** 

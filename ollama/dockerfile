@@ -1,10 +1,8 @@
 FROM ubuntu:22.04
 
-# Installer Ollama et dépendances
 RUN apt-get update && apt-get install -y curl sudo
 RUN curl -fsSL https://ollama.com/install.sh | sh
 
-# Copier le Modelfile
 COPY Modelfile /Modelfile
 
 CMD bash -c "\

@@ -4,6 +4,8 @@ import sys
 import os
 from client_llm import generate_to_streamlit
 
+# Page qui récupère la query et qui affiche les réponses du LLM en stream (non bloc par bloc) 
+
 st.set_page_config(page_title="Assistant DGFiP", page_icon="")
 st.image("https://basegun.interieur.gouv.fr/assets/logo_dtnum-BjUxmtCL.jpg", width=150)
 

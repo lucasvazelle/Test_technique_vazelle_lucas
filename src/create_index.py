@@ -8,6 +8,7 @@ import duckdb
 def load_documents_from_duckdb(
     db_path: str, table_name: str = "info_particulier_impot"
 ) -> list[Document]:
+    """Récupère les documents de la base de données DuckDB et les formates pour créer des vecteurs de ces fiches"""
     con = duckdb.connect(database=db_path)
     df = con.execute(f"SELECT * FROM {table_name}").fetchdf()
     con.close()
@@ -29,6 +30,8 @@ def load_documents_from_duckdb(
 def create_faiss_index(
     documents: list[Document], save_path: str = "index/faiss_data"
 ) -> FAISS:
+    """Creation du vecteur store FAISS, embedding pour la transformation en vecteur des documents en input"""
+
     embedding_model = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )

@@ -7,7 +7,7 @@ model = "model_llama_3b"
 
 
 def get_ollama_url():
-    # Récupère le mode d'exécution ('local' ou 'docker'), défaut à 'local'
+    """Récupère le mode d'exécution ('local' ou 'docker'), défaut à 'local'"""
     mode = os.getenv("APP_ENV", "local")
     if mode == "docker":
         return "http://ollama:11434/api/generate"
@@ -16,6 +16,7 @@ def get_ollama_url():
 
 
 def generate(user_input, previous_context):
+    """ Génère une réponse en utilisant l’API du LLM local + le contexte FAISS"""
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
 
@@ -48,6 +49,7 @@ def generate(user_input, previous_context):
 
 
 def generate_to_streamlit(user_input, previous_context):
+    """ Génère une réponse en utilisant l’API du LLM local + le contexte FAISS, adapté pour streamlit"""
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
 

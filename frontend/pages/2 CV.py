@@ -1,16 +1,12 @@
 import streamlit as st
 from utils.styles import get_base64_image
 
-# Configuration de la page
 st.set_page_config(page_title="Mon CV", page_icon="📄", layout="wide")
 
-# Bouton "Quitter le CV"
 if st.button("⬅ Quitter le CV"):
     st.switch_page(
         "pages/1 Assistant.py"
-    )  # Change le chemin selon ta page d'accueil réelle
-
-# Image de fond (ton CV)
+    ) 
 bg_img = get_base64_image("media/CV.jpg")
 
 # CSS pour affichage plein écran + suppression header/footer/sidebar
@@ -48,7 +44,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Contenu HTML avec bouton
 st.markdown(
     f"""
     <div class="section-cv">

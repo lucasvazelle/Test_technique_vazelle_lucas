@@ -6,6 +6,8 @@ model = "model_llama_3b"
 
 
 def generate(user_input, previous_context):
+    """ Génère une réponse en utilisant l’API du LLM local + le contexte FAISS"""
+
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
 
@@ -38,6 +40,8 @@ def generate(user_input, previous_context):
 
 
 def generate_to_streamlit(user_input, previous_context):
+    """ Génère une réponse en utilisant l’API du LLM local + le contexte FAISS, adapté pour Streamlit"""
+
     index = load_faiss_index()
     retrieved_context = get_context_from_query(index, user_input)
 

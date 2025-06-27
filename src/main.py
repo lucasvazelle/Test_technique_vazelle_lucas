@@ -6,7 +6,7 @@ def main():
 
     while True:
         user_input = input(
-            "\nPosez votre question, nous serons ravi de vous aider :\n> "
+            "\nPosez votre question, je serais ravi de vous aider :\n> "
         )
         print()
         context = generate(user_input, context)

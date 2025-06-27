@@ -19,4 +19,4 @@ spec:
             - containerPort: 8501
           env:
             - name: APP_ENV
-              value: "docker"  # utilise http://ollama:11434
+              value: "docker" 

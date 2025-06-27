@@ -4,6 +4,7 @@ import re
 
 
 def load_faiss_index(load_path: str = "index/faiss_data") -> FAISS:
+    """Charge l'index FAISS"""
     embedding_model = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
@@ -13,6 +14,7 @@ def load_faiss_index(load_path: str = "index/faiss_data") -> FAISS:
 
 
 def get_context_from_query(index, query, k=3):
+    """Retourne les k fiches les plus pertinentes par rapport à la query utilisateur pour l'insérer dans le prompt final"""
     docs = index.similarity_search(query, k=k)
     sources = []
 
